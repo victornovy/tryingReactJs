@@ -1,0 +1,33 @@
+{
+  "name": "trying-react",
+  "version": "1.0.0",
+  "description": "Trying React JS",
+  "main": "index.js",
+  "scripts": {
+    "babel-build": "babel js/ -d build/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "material-ui": "^0.16.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "install": "^0.8.1",
+    "npm": "^3.10.9",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victornovy/tryingReactJs.git"
+  },
+  "author": "Victor Novy <novyvictor@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victornovy/tryingReactJs/issues"
+  },
+  "homepage": "https://github.com/victornovy/tryingReactJs#readme"
+}
