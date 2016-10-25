@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RaisedButton from 'material-ui/RaisedButton';
 
 ReactDOM.render(
-    '<RaisedButton label="Default" />',
+    <h1>Test</h1>,
     document.getElementById('example')
 );

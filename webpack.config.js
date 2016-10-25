@@ -2,28 +2,24 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        app: './src/index.js',
-        libs: ['react', 'react-dom', 'material-ui']
+    context: __dirname,
+    entry: './src/index.js',
+    module: {
+        loaders: [
+            {
+                test: /\.js?$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['react', 'es2015', 'stage-0'],
+                    plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy']
+                }
+            }
+        ]
     },
     output: {
-        path: path.join(__dirname, 'build/'),
+        path: __dirname + '/build/',
         filename: 'app.js'
     },
-    plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-          name: 'libs',
-          minChunks: Infinity,
-          filename: 'libs.js'
-        })
-    ],
-    module: {
-    loaders: [
-      {
-        test: /\.js$/, // All .js files
-        loaders: ['babel-loader'], // react-hot is like browser sync and babel loads jsx and es6-7
-        exclude: ['./node_modules'],
-      },
-    ]
-  }
+    plugins: []
 };
