@@ -19,7 +19,8 @@
     "babel-preset-stage-0": "^6.16.0",
     "material-ui": "^0.16.1",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-tap-event-plugin": "^1.0.0"
   },
   "devDependencies": {
     "webpack": "^1.13.2",
