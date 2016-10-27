@@ -7,6 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import IconButton from 'material-ui/IconButton';
 
 injectTapEventPlugin();
 
@@ -43,6 +44,14 @@ class Layout extends React.Component {
                     <FloatingActionButton mini={this.state.isMini} style={style} onTouchTap={() => this.changeMiniState(this.state.isMini)}>
                         <ContentAdd />
                     </FloatingActionButton>
+                    <br />
+                    <IconButton
+                      iconClassName="material-icons"
+                      tooltipPosition="bottom-right"
+                      tooltip="Test ToolTip"
+                    >
+                      Tooltip
+                    </IconButton>
                 </div>
             </MuiThemeProvider>
         );
