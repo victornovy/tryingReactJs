@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoStore from '../store/TodoStore';
 
 class Todo extends React.Component {
     render() {
@@ -15,18 +16,7 @@ export default class TodoList extends React.Component {
     constructor() {
         super();
         this.state = {
-            todos: [
-                {
-                    id: 1232,
-                    title: "Title of todo test",
-                    description: "description of todo test"
-                },
-                {
-                    id: 12323,
-                    title: "Title of todo test",
-                    description: "description of todo test"
-                }
-            ]
+            todos: TodoStore.getAll()
         };
     }
 
