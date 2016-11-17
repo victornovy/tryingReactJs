@@ -10,6 +10,7 @@ export default class SinglePage extends React.Component {
                 <Link to="stateXProps"><button>State X Props</button></Link>
                 <Link to="material"><button>Material</button></Link>
                 <Link to="onlyPage"><button>Router Page</button></Link>
+                <Link to="todoList"><button>Todo List</button></Link>
                 {this.props.children}
             </div>
         );
