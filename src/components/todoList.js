@@ -4,10 +4,10 @@ import TodoStore from '../store/TodoStore';
 class Todo extends React.Component {
     render() {
         return(
-            <div>
-                <h3>{this.props.title}</h3>
-                <p>{this.props.description}</p>
-            </div>
+            <dl>
+                <dt>{this.props.title}</dt>
+                <dd>{this.props.description}</dd>
+            </dl>
         )
     }
 }
@@ -18,6 +18,14 @@ export default class TodoList extends React.Component {
         this.state = {
             todos: TodoStore.getAll()
         };
+    }
+
+    componentWillMount() {
+        TodoStore.on('change', function() {
+            this.setState({
+                todos: TodoStore.getAll()
+            });
+        }.bind(this));
     }
 
     render() {
