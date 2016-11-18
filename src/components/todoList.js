@@ -24,11 +24,18 @@ export default class TodoList extends React.Component {
     }
 
     componentWillMount() {
-        TodoStore.on('change', function() {
-            this.setState({
-                todos: TodoStore.getAll()
-            });
-        }.bind(this));
+        TodoStore.on('change', this.getTodos.bind(this));
+    }
+
+    componentWillUnmount() {
+        TodoStore.removeListener('change', this.getTodos.bind(this));
+    }
+
+    getTodos() {
+        console.log(TodoStore.getAll().length);
+        this.setState({
+            todos: TodoStore.getAll()
+        });
     }
 
     handleChange(e) {
