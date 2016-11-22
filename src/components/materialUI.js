@@ -1,24 +1,29 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
-import {deepOrange500, blue900, teal50} from 'material-ui/styles/colors';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
+
+import { IconButton, TextField } from 'material-ui';
+
+import { deepOrange500, blue900, teal50 } from 'material-ui/styles/colors';
+import { getMuiTheme, MuiThemeProvider } from 'material-ui/styles'
+
+import { FloatingActionButton, RaisedButton, FlatButton } from 'material-ui';
+import { Paper, Menu, MenuItem, Divider } from 'material-ui';
+
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import IconButton from 'material-ui/IconButton';
 
 injectTapEventPlugin();
 
 const style = {
   marginRight: 20,
+  display: 'inline-block',
+  margin: '16px 32px 16px 0'
 };
 
 const muiTheme = getMuiTheme({
   palette: {
     accent1Color: deepOrange500,
     primary1Color: blue900,
-    canvasColor:teal50,
+    canvasColor: teal50,
   },
 });
 
@@ -32,6 +37,14 @@ export default class Material extends React.Component {
     };
 
     render() {
+        const standardActions = (
+            <FlatButton
+              label="Ok"
+              primary={true}
+              onTouchTap={this.handleRequestClose}
+            />
+        );
+
         return(
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
@@ -49,6 +62,22 @@ export default class Material extends React.Component {
                     >
                       Tooltip
                     </IconButton>
+                    <br />
+                    <RaisedButton
+                        label="Raised Button"
+                        secondary={true}
+                        onTouchTap={this.handleTouchTap}
+                     />
+                     <br />
+                     <Paper style={style}>
+                     <Menu>
+                        <MenuItem primaryText="Maps" />
+                        <MenuItem primaryText="Books" />
+                        <Divider />
+                        <MenuItem primaryText="Flights" />
+                        <MenuItem primaryText="Apps" />
+                      </Menu>
+                    </Paper>
                 </div>
             </MuiThemeProvider>
         );
