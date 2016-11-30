@@ -37,14 +37,6 @@ export default class Material extends React.Component {
     };
 
     render() {
-        const standardActions = (
-            <FlatButton
-              label="Ok"
-              primary={true}
-              onTouchTap={this.handleRequestClose}
-            />
-        );
-
         return(
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
@@ -78,6 +70,11 @@ export default class Material extends React.Component {
                         <MenuItem primaryText="Apps" />
                       </Menu>
                     </Paper>
+                    <br />
+                    <FlatButton
+                      label="Ok"
+                      disabled={true}
+                    />
                 </div>
             </MuiThemeProvider>
         );
