@@ -8,6 +8,7 @@ import Event from './components/event';
 import SinglePage from './components/singlePage';
 import OnlyPage from './components/onlyPage';
 import TodoList from './components/todoList';
+import User from './user/user';
 import Firebase from './firebaseApp';
 
 const example = document.getElementById('example');
@@ -21,6 +22,7 @@ ReactDOM.render(
             <Route path="stateXProps" component={StateXProps}></Route>
             <Route path="material" component={Material}></Route>
             <Route path="todoList" component={TodoList}></Route>
+            <Route path="user" component={User}></Route>
         </Route>
     </Router>,
     example

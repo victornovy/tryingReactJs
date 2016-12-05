@@ -11,6 +11,7 @@ export default class SinglePage extends React.Component {
                 <Link to="material"><button>Material</button></Link>
                 <Link to="onlyPage"><button>Router Page</button></Link>
                 <Link to="todoList"><button>Todo List</button></Link>
+                <Link to="user"><button>User</button></Link>
                 {this.props.children}
             </div>
         );
