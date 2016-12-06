@@ -40,7 +40,7 @@ class TodoStore extends EventEmitter {
                 this.createTodo(action.title, action.description);
                 break;
             default:
-                throw 'Invalid ACTION';
+                console.error('Invalid ACTION');
         }
     }
 }

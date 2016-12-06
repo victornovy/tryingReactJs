@@ -3,6 +3,8 @@ import Formsy from 'formsy-react';
 import { TextField, RaisedButton } from 'material-ui';
 import { FormsyText } from 'formsy-material-ui/lib';
 import { MuiThemeProvider } from 'material-ui/styles';
+import * as UserActions from './userActions';
+import UserStore from './userStore';
 
 export default class UserComponent extends React.Component {
     constructor() {
@@ -12,7 +14,6 @@ export default class UserComponent extends React.Component {
         };
     }
 
-
     enableButton() {
         console.info('Button Enable');
         this.setState({
@@ -21,7 +22,7 @@ export default class UserComponent extends React.Component {
     };
 
     disableButton() {
-        console.error('Disabled');
+        console.info('Disabled');
         this.setState({
             disableSubmit: true
         });
@@ -33,6 +34,7 @@ export default class UserComponent extends React.Component {
 
     submitForm() {
         console.info('Can Submit');
+        UserActions.createUser();
     }
 
     render() {

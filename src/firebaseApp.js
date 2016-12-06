@@ -34,3 +34,5 @@ const newArticle = {
 // exampleDatabase.child('-KXnAaVBvn2n9Cbwoj4p').update({dad: 'pah'});
 // exampleDatabase.child('-KXn8bdApTKuJUWNqXJo').set({'dad': 'pah'});
 // exampleDatabase.child('-KXn7jtvLcP2RylhaOAP').remove();
+
+export default exampleDatabase;
