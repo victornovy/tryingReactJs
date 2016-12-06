@@ -32,9 +32,9 @@ export default class UserComponent extends React.Component {
         console.error('Form error:', data);
     };
 
-    submitForm() {
+    submitForm(data) {
         console.info('Can Submit');
-        UserActions.createUser();
+        UserActions.createUser(data.firstName, data.lastName, data.email);
     }
 
     render() {

@@ -7,14 +7,19 @@ class UserStore extends EventEmitter {
         super();
     }
 
-    createUser() {
-        console.log(firebase);
+    createUser(firstName, lastName, email) {
+        var user = {
+            'firstName': firstName,
+            'lastName': lastName,
+            'email': email
+        }
+        firebase.push(user);
     }
 
     handleActions(action) {
         switch (action.type) {
             case "CREATE_USER":
-                this.createUser();
+                this.createUser(action.firstName, action.lastName, action.email);
             break;
             default:
                 console.error('Invalid ACTION');
