@@ -5,6 +5,22 @@ import firebase from '../firebaseApp';
 class UserStore extends EventEmitter {
     constructor() {
         super();
+        this.users = [];
+    }
+
+    reloadUsers(users) {
+        var keys = Object.keys(users), newUsers = [];
+        keys.forEach(function(value, index) {
+            users[value].id = value;
+            newUsers.push(users[value]);
+        });
+        
+        this.users = newUsers;
+        return newUsers;
+    }
+
+    findUsers() {
+        return this.users;
     }
 
     createUser(firstName, lastName, email) {
@@ -12,7 +28,7 @@ class UserStore extends EventEmitter {
             'firstName': firstName,
             'lastName': lastName,
             'email': email
-        }
+        };
         firebase.push(user);
     }
 
@@ -21,14 +37,21 @@ class UserStore extends EventEmitter {
             case "CREATE_USER":
                 this.createUser(action.firstName, action.lastName, action.email);
             break;
+            case 'FIND_USERS':
+                this.findUsers();
+            break;
+            case 'RELOAD_USERS':
+                this.reloadUsers(action.users);
+                this.emit('change');
+            break;
             default:
-                console.error('Invalid ACTION');
+                console.error('Invalid ACTION (User Store)');
         }
     }
 }
-
 const userStore = new UserStore;
 
-dispatcher.register(userStore.handleActions.bind(userStore));
+var index = dispatcher.register(userStore.handleActions.bind(userStore));
+userStore.dispatcherIndex = index;
 
 export default userStore;

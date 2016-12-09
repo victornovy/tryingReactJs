@@ -9,7 +9,6 @@ import SinglePage from './components/singlePage';
 import OnlyPage from './components/onlyPage';
 import TodoList from './components/todoList';
 import User from './user/user';
-import Firebase from './firebaseApp';
 
 const example = document.getElementById('example');
 
