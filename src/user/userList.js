@@ -12,6 +12,8 @@ export default class UserComponent extends React.Component {
             isLoading: true,
             users: []
         };
+
+        this.findUsers = this.findUsers.bind(this);
     }
 
     setLoading(isLoading = false) {
@@ -21,28 +23,30 @@ export default class UserComponent extends React.Component {
     }
 
     findUsers() {
+        debugger;
         this.setState({
             users: UserStore.findUsers()
         });
     }
 
     componentWillMount() {
-        UserActions.reloadUsers();
-        UserStore.on('change', this.findUsers.bind(this));
+        UserStore.on('change', this.findUsers);
     }
 
     componentDidMount() {
         this.setLoading();
+        UserActions.reloadUsers();
     }
 
     componentWillUnmount() {
-        UserStore.removeListener('change', this.findUsers.bind(this));
+        UserStore.removeListener('change', this.findUsers);
+        debugger;
     }
 
     render() {
-        let table, tableBody = <span></span>;
+        let table, tableBody = <TableBody></TableBody>;
 
-        const TABLE_HEADER = 
+        const TABLE_HEADER =
             <TableHeader>
                 <TableRow>
                     <TableHeaderColumn>E-mail</TableHeaderColumn>
@@ -53,16 +57,16 @@ export default class UserComponent extends React.Component {
         ;
 
         const IS_LOADING = this.state.isLoading;
-        
+
         if (!IS_LOADING) {
-            tableBody = 
+            tableBody =
                 <TableBody>
                     {this.state.users.map( (row, index) =>
                         <TableRow key={index}>
                             <TableRowColumn>{row.email}</TableRowColumn>
                             <TableRowColumn>{row.firstName}</TableRowColumn>
                             <TableRowColumn>{row.lastName}</TableRowColumn>
-                        </TableRow>    
+                        </TableRow>
                     )}
                 </TableBody>
             ;
@@ -74,7 +78,7 @@ export default class UserComponent extends React.Component {
                 {tableBody}
             </Table>
         ;
-        
+
         return (
             <MuiThemeProvider>
                 {table}

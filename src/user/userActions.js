@@ -25,7 +25,8 @@ export function findUsers(filter) {
 }
 
 export function reloadUsers() {
-    firebase.on('value', function(res) {
+    firebase.once('value', function(res) {
+        debugger;
         var users = res.val();
         dispatcher.dispatch({
             type: 'RELOAD_USERS',

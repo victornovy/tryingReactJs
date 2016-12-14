@@ -14,7 +14,7 @@ class UserStore extends EventEmitter {
             users[value].id = value;
             newUsers.push(users[value]);
         });
-        
+
         this.users = newUsers;
         return newUsers;
     }
@@ -29,18 +29,23 @@ class UserStore extends EventEmitter {
             'lastName': lastName,
             'email': email
         };
-        firebase.push(user);
+        window.a = firebase.push(user).then(function() {
+            this.users.push(user);
+            this.emit('change');
+        }.bind(this));
     }
 
     handleActions(action) {
         switch (action.type) {
             case "CREATE_USER":
+                debugger;
                 this.createUser(action.firstName, action.lastName, action.email);
             break;
             case 'FIND_USERS':
                 this.findUsers();
             break;
             case 'RELOAD_USERS':
+                debugger;
                 this.reloadUsers(action.users);
                 this.emit('change');
             break;
